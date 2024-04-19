@@ -1,5 +1,4 @@
 import { useNavigation } from "@react-navigation/native";
-import { useCart } from "../../../context/CartContext";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/config/Redux/cartSlice";
 
@@ -13,7 +12,6 @@ const { View, Text, TouchableOpacity, FlatList, Button, Image, Pressable } = req
 
 const ProductList = ({ categoryField }) => {
  const navigation = useNavigation()
- const { addToCart } = useCart()
  const dispatch = useDispatch()
 
  const handleAddedd = () => {

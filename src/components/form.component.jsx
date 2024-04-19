@@ -2,7 +2,7 @@ const { View, TextInput } = require("react-native")
 
 
 
-const FormElement = ({ value, name, placeholder }) => {
+const FormElement = ({ value, name, placeholder, onChange, type }) => {
 
     return (
         <View>
@@ -16,9 +16,13 @@ const FormElement = ({ value, name, placeholder }) => {
                 borderWidth:1,
                 borderColor:'white'
             }}
-                placeholder={placeholder} 
+                name={name}
+                type={type}
                 value={value} 
-                name={name}/>
+                onChangeText={(text) => onChange(name, text)}
+                placeholder={placeholder} 
+                
+                />
         </View>
     )
 }

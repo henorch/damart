@@ -1,16 +1,14 @@
 import { Button, Image, ScrollView, Text, View } from "react-native"
-import { useCart } from "../../../context/CartContext";
+
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/config/Redux/cartSlice";
 
 
 const DescriptionComponent = ({ route }) => {
     const { productDetail } = route.params
-    const { addToCart } = useCart()
     const dispatch = useDispatch()
 
     const handleAddedd = () => {
-        addToCart(productDetail),
         dispatch(addItem(productDetail))
         console.log(productDetail);
      }

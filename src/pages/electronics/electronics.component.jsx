@@ -1,5 +1,5 @@
 import { ScrollView, View, Image, Button, Text } from "react-native"
-import { useCart } from "../../../context/CartContext";
+
 import { Categories } from "../../data";
 
 

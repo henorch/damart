@@ -3,7 +3,6 @@ import { ScrollView, View, StyleSheet, Text, Button, TextInput } from "react-nat
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import HeaderComponent from "../components/common/header.component";
-import { useCart } from "../../context/CartContext";
 import { useNavigation } from "@react-navigation/native";
 
 
@@ -100,7 +99,6 @@ const UserInfo = () => {
 }
 
 const ProductSumary = () => {
-  const { cartSum } = useCart()
     return (
         <View style={{
             backgroundColor:'white',

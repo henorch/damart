@@ -5,19 +5,18 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomePage from '../pages/home/home.page';
 import ElectronicsComponents from '../pages/electronics/electronics.component';
 import GrocerriesComponents from '../pages/grocerries/grocerries..component';
-import { useCart } from '../../context/CartContext';
 import CustomDrawer from '../components/customDrawer.component';
 import SignUp from '../components/signUp.component'; // we remove this later
 import CartComponent from '../pages/cart/cart.component';
+import { useSelector } from 'react-redux';
 
 
 const Drawer = createDrawerNavigator()
 
 export const DrawerPanel = () => {
-  
-  
   const navigation = useNavigation();
-  const { count } = useCart()
+  const  count  = useSelector(state => state.cart.items.length)
+  
   return(
       <Drawer.Navigator 
       drawerContent={(props) =>  <CustomDrawer {...props}/>}

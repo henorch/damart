@@ -1,7 +1,44 @@
-import { Button, View, Text, TouchableOpacity } from "react-native"
+import { Button, View, Text, TouchableOpacity, Alert } from "react-native"
 import FormElement from "./form.component"
+import { useState } from "react"
+import { useUsercontext } from "../../context/User.context"
+const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{;':"\||,.<>/?])+$/;
+
 
 const SignIn = ({ navigation }) => {
+   const { signIn } = useUsercontext()
+
+   async function FormValidation(username, password){
+    if(!username.trim() ){
+        Alert.alert('Error', 'username cannot be empty')
+        return ;
+    }else if (!password.trim()) {
+        Alert.alert('Error', 'password cannot be empty')
+        return;
+    }else{
+        await signIn(username, password)
+    }
+}
+
+    const [ formData, setFormData ] = useState({
+        username:'',
+        password:''
+    })
+
+    const handleOnChange = (name, value) => {
+          setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = async (event) => {
+        const { username, password } = formData
+        event.preventDefault()
+        FormValidation(username, password)
+
+    }
+
     return(
 
         <View style={{
@@ -25,10 +62,11 @@ const SignIn = ({ navigation }) => {
              alignItems:'center',
              backgroundColor:'green'}}>
            <Text style={{fontSize:40, color:'white', fontWeight:'bold'}}>Sign In</Text> 
-            <FormElement placeholder="username" value="username" name="username"/>
-            <FormElement placeholder="password" value="password" name="password"/>
+            <FormElement placeholder="username" name="username"  value={ formData.username } onChange={handleOnChange}  type="text"/>
+            <FormElement placeholder="password" name="password" value={formData.password } onChange={handleOnChange} type="securedText"/>
 
             <TouchableOpacity
+            onPress={handleSubmit}
             style={{
                 height:40,
                 display:'flex',

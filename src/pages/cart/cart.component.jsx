@@ -1,14 +1,12 @@
-import { FlatList, View, Text, Image, Button } from "react-native"
-import { useCart } from "../../../context/CartContext";
+import { FlatList, View, Text, Image, Button, Pressable } from "react-native"
+
 import { useNavigation } from "@react-navigation/native";
-import { addItem, removeItem } from "../../utils/config/Redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
 const CartElement = ( { prodItem , idx}) => {
     
     const navigation = useNavigation();
-    const { removeFromCart } = useCart()
     const dispatch = useDispatch()
     return(
         <View style={{ width: "95%",
@@ -49,8 +47,8 @@ const CartElement = ( { prodItem , idx}) => {
     )
 }
 const CartComponent = () => {
-    const { cartItems, count, cartSum } = useCart();
-    
+    const count = useSelector(state => state.cart.items.length)
+    const cartItems =  useSelector(state => state.cart.items)
     const navigation = useNavigation();
     return(
         
@@ -99,15 +97,23 @@ const CartComponent = () => {
             fontWeight:'bold',
             fontSize:30,
             
-        }}>{cartSum}</Text>
+        }}>50,000</Text>
     </View>
     <View style={{
         alignSelf:'center',
         display:'flex',
     }}>
-    <Button 
+    <Pressable
+    style={{
+        backgroundColor:'blue',
+        padding:10,
+        width:200,
+        alignItems:'center'
+    }}
     onPress={() => navigation.navigate('checkout')}
-    title="Proceed To CheckOut"/>
+    ><Text style={{
+        color:'white'
+    }}>Continue To Checkout</Text></Pressable>
     </View>
             </View>
         </View>
