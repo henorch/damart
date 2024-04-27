@@ -47,11 +47,5 @@
             },
         ]
     },
-    {
-        id:2,
-        name: 'clothings',
-        products:[
-
-        ]
-    }
+    
 ]

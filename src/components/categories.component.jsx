@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -44,61 +44,43 @@ const Categories = [
         id:8,
         icon:'kitchen',
         name:"Kitchen and Catering"
-    }
+    },
+    {
+        id:9,
+        icon:'kitchen',
+        name:"Others"
+    },
+
 ]
 const CategoryElement = ( { icon, id, categoryname }) => {
     const navigation = useNavigation()
     return (
-        <TouchableWithoutFeedback style={{
-            backgroundColor:'white',
-
-            height:80,
-            margin:2,
-            width:80,
-            justifyContent:'center',
-            alignItems:'center'
-        }}
+        <Pressable style={styles.elementcontainer}
         onPress={() => {
-            console.log(id);
-            page = `${categoryname}`
-            console.log(page.toLowerCase());
-            navigation.navigate(page.toLowerCase())
-        }}
-        key={id}>
-               <TouchableWithoutFeedback style={{
-          display:'flex',
-          flexDirection:'row',
-          justifyContent:'center',
-          borderRadius:20,
-          backgroundColor:'blue',
-          padding:10,
-          opacity:0.9,
-          alignItems:'center'
-        }}>    
+            console.log(categoryname.toLowerCase());
+            navigation.navigate(categoryname.toLowerCase())
+            }} key={id}>
+               <View style={styles.elementcontent}>    
         <Icon name={icon} color="white" size={25}/>
-        </TouchableWithoutFeedback>
+        </View>
             <Text style={{
-                textAlign:"center"
+                textAlign:"center",
+                fontWeight:'bold'
             }}>{categoryname}</Text>
-        </TouchableWithoutFeedback>
+        </Pressable>
     )
 }
 
 
 const Category = () => {
     return(
-        <View>
+        <View style={styles.container}>
             <Text style={{
                 margin:15,
+                fontSize:14,
                 fontWeight:'bold'
-            }}>All categories</Text>
-        <View style={{
-            display:'flex',
-            flexDirection:'row',
-            padding:10,
-            flexWrap:'wrap'
-        }}
-        >
+            }}>ALL CATEGORIES</Text>
+        <View style={styles.subcontainer_1}>
             {
             Categories.map(({ icon, id, name}) => <CategoryElement icon={icon} id={id} categoryname={name}/>)
         }
@@ -107,5 +89,43 @@ const Category = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container:{
+        width:'100%',
+        backgroundColor:'white',
+        marginVertical:5
+    },
+
+    subcontainer_1:{
+        display:'flex',
+        flexDirection:'row',
+        padding:1,
+        justifyContent:'center',
+        alignItems:'center',
+        flexWrap:'wrap'
+    },
+
+    elementcontainer: {
+        borderWidth:1,
+        borderColor:'#ffeeff',
+        height:120,
+        width:'32%',
+        paddingTop:5,
+        paddingBottom:5,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    elementcontent: {
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        borderRadius:20,
+        backgroundColor:'blue',
+        padding:10,
+        opacity:0.9,
+        alignItems:'center'
+    }
+})
 
 export default Category;

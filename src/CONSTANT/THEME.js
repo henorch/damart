@@ -1,0 +1,8 @@
+import { THEMECOLOR } from "./COLORS"
+
+
+
+
+export const DARKTHEME = {
+    APP_BACKGROUND_COLOR: THEMECOLOR.DARK_MODE.BACKGROUND_COLOR
+} 

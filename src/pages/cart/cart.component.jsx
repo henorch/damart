@@ -2,6 +2,8 @@ import { FlatList, View, Text, Image, Button, Pressable } from "react-native"
 
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
+import { useCartContext } from "../../../context/cart.context";
+import { useEffect } from "react";
 
 
 const CartElement = ( { prodItem , idx}) => {
@@ -46,9 +48,22 @@ const CartElement = ( { prodItem , idx}) => {
         
     )
 }
+
 const CartComponent = () => {
+    const { cartItem, products, calculateTotalPrice, setCartItem} = useCartContext()
     const count = useSelector(state => state.cart.items.length)
     const cartItems =  useSelector(state => state.cart.items)
+    
+    useEffect(() => {
+        products.push(...cartItems)
+         setCartItem({
+            customerName:"Oluwaniyi",
+            products,
+            status: "PENDING",
+        })
+    }, [])
+    
+    console.log(cartItem);
     const navigation = useNavigation();
     return(
         
@@ -97,7 +112,7 @@ const CartComponent = () => {
             fontWeight:'bold',
             fontSize:30,
             
-        }}>50,000</Text>
+        }}>{calculateTotalPrice(cartItems)}</Text>
     </View>
     <View style={{
         alignSelf:'center',

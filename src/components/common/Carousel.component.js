@@ -30,7 +30,7 @@ export default function Carousel({ autoplayInterval = 5000}){
     return(
         <View style={{
             height:350,
-            width:450,
+            width:'100%',
             margin:10,
             flex:1,
             }}>
@@ -38,7 +38,7 @@ export default function Carousel({ autoplayInterval = 5000}){
         <Image source={images[currentImageIndex]} alt='image loading'
         style={{
             height:350,
-            width:340,
+            width:'95%',
         }}
         />
         <View style={{

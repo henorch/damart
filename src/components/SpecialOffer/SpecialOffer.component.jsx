@@ -57,23 +57,22 @@ const SpecialOffers = [
 
 
 const SpecialOffer = () => {
-  const { loading, error, data } = useQuery(GET_ALL_USERS);
-  if(loading ) return <Text>Is loading p,ease wait</Text>
-  if(error) return <Text>{error.message}</Text>
-  console.log('the data comes from special offers');
-  console.log(data.products);
+//   const { loading, error, data } = useQuery(GET_ALL_USERS);
+//   if(loading ) return <Text>Is loading p,ease wait</Text>
+//   if(error) return <Text>{error.message}</Text>
+//   console.log('the data comes from special offers');
+//   console.log(data.products);
     return(
         <View 
-        key={SpecialOffers.id}
         style={{
-            backgroundColor:"#ffdffd",
+            backgroundColor:"white",
             marginTop:10,
         }}>
             <Text style={{
-                fontSize:20,
+                fontSize:14,
                 fontWeight:'bold',
                 padding:10,
-            }}>Special Offer</Text>
+            }}>OFFER FOR YOU</Text>
             <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
                 {SpecialOffers.map((offers) => <SpecialOfferElement id={offers.id} image={offers.image} price={offers.price} name={offers.name}/>)}

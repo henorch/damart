@@ -1,0 +1,4 @@
+ export const SIZES = {
+    LISTING_SIZE_WIDTH: '20VW',
+    LISTING_SIZE_HEIGHT:'20VH' 
+}

@@ -62,11 +62,11 @@ const HomePage = () => {
         <View style={{
             backgroundColor:"#ffdffd"
         }}>
-           
-            
-         <SpecialOffer/>
-         <Category/>
+        
         <DiscountOffer/>
+         <Category/>
+      
+         <SpecialOffer/>
         </View>
         </ScrollView>
     )

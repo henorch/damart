@@ -13,18 +13,18 @@ const Stack = createNativeStackNavigator();
 
 
 
-const electronics = Categories[0].products;
+const clothings = Categories[0].products;
 
-const ElectronicsComponents = () => {
+const Clothingsomponents = () => {
     return(
         <View style={{
             flex:1,
             marginVertical:5,
             width:'100%',
         }}>
-            <ProductList categoryField={electronics}/>
+            <ProductList categoryField={clothings}/>
         </View> 
     )
 }
 
-export default ElectronicsComponents
+export default Clothingsomponents

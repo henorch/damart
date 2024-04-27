@@ -6,13 +6,14 @@ const DiscountOffer = () => {
    
     return (
         <View style={{
-            marginTop:10,
+            marginTop:5,
+            backgroundColor:'white',
         }}>
             <Text style={{
-                fontSize:20,
+                fontSize:14,
                 fontWeight:'bold',
                 padding:10,
-            }}>Discount offer </Text>
+            }}>TODAY'S DEAL</Text>
             <ScrollView horizontal={true}>
             { Categories[0].products.map(({ image }) => 
             <View style={{padding:5,

@@ -17,11 +17,36 @@ import gql from "graphql-tag"
 
 
 export const REG_USER = gql`
-  mutation REGISTER($input: createNewInput){
+  mutation CREATE_USER($input: createNewInput){
     createNewUser(input: $input) {
-      username,
-      firstname,
-      email
+        success
+        errors,
+        emailError
     }
 }
 `
+
+export const CREATE_ORDER = gql`
+    mutation create_order($customerName: String, 
+      $products: [productInput], 
+      $status: String, 
+      $orderDate: String, 
+      $delivery: [deliveryInput]){
+        createOrder(customerName: $customerName, products: $products,
+        status: $status,
+        delivery: $delivery) {
+          customerName
+          products {
+            name
+            price
+            quantity
+          },
+          delivery {
+            address
+            collector_name
+            telephone
+          }
+          status
+        }
+      }
+  `

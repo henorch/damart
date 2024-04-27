@@ -8,6 +8,9 @@ import client from './src/utils/config/graphql/clientconfig';
 import { Provider } from 'react-redux';
 import store from './src/utils/config/Redux/store';
 import { USerProvider } from './context/User.context';
+import { CartProvider } from './context/cart.context';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DARKTHEME } from './src/CONSTANT/THEME';
 
 
 
@@ -17,13 +20,15 @@ import { USerProvider } from './context/User.context';
 export default function App() {
   
 
-  const [isAuth, setIsAuth] = useState(true)
+  const [isAuth, setIsAuth] = useState(false)
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-           <NavigationContainer>
+        <CartProvider>
+          <NavigationContainer>
             {isAuth ? <AuthComponent/> : <RootNavigation/>}
           </NavigationContainer>
+        </CartProvider>
         </ApolloProvider>
     </Provider>
   );

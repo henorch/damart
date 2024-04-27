@@ -120,7 +120,6 @@ const GrocerriesComponents = () => {
     return(
         <View style={{
             flex:1,
-            margin:10,
             width:'100%',
         }}>
             <ProductList categoryField={Grocceries}/>

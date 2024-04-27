@@ -7,15 +7,8 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigator = ({ categoryname }) => {
     return (
-        <Stack.Navigator  screenOptions={{
-            headerShown:false
-        }}>
-            <Stack.Screen name="productlist">
-                {props => <ProductList {...props} categoryField={categoryname}/>}
-            </Stack.Screen>
-            <Stack.Screen name="detailscreen" options={{
-                title:'product info'
-            }} component={DescriptionComponent}/>
+        <Stack.Navigator>
+            <Stack.Screen name="detailscreen" component={DescriptionComponent}/>
             <Stack.Screen name='checkout' component={Checkout}/>
             <Stack.Screen name='payment_method' component={PaymentMethod}/>
         </Stack.Navigator>

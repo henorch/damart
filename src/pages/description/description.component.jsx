@@ -1,7 +1,7 @@
-import { Button, Image, ScrollView, Text, View } from "react-native"
+import { Button, Image, ScrollView, StyleSheet, Text, View } from "react-native"
+import { useDispatch, useSelector } from "react-redux";
+import { addItem} from "../../utils/config/Redux/cartSlice";
 
-import { useDispatch } from "react-redux";
-import { addItem } from "../../utils/config/Redux/cartSlice";
 
 
 const DescriptionComponent = ({ route }) => {
@@ -105,5 +105,6 @@ const DescriptionComponent = ({ route }) => {
         </View>
     )
 }
+
 
 export default DescriptionComponent
