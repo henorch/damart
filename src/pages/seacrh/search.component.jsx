@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { FlatList, Pressable, StyleSheet, Text, TextInput } from "react-native";
+import { FlatList, StyleSheet, Text, TextInput } from "react-native";
+import ProductList from "../../components/ProductList/productList.component";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/config/Redux/cartSlice";
 import { useFonts, Inter_100Thin } from "@expo-google-fonts/inter";
-import { ImageComponent } from "../common/Image.component";
-import { ButtonComponent } from "../common/Button.component";
-import { useNavigation } from "@react-navigation/native";
+import { ImageComponent } from "../../components/common/Image.component";
+import { ButtonComponent } from "../../components/common/Button.component";
 
 
 
@@ -57,40 +57,33 @@ const EachProduct = ({productDetail}) => {
 
 const SearchComponent = ({ products }) => {
     const [searchQuery, setSearchQuery] = useState('');
-    const navigation = useNavigation()
+
+    // Function to handle changes in the search input
     const handleSearchInputChange = (text) => {
       setSearchQuery(text);
     };
   
-
+    // Filtered product list based on the search query
     const filteredProducts = products.filter(product =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   
+    // Render item function for FlatList
     const renderItem = ({ item }) => (
-        <Pressable onPress={() => {navigation.navigate("detailscreen", { productDetail : item })}}>
-            <EachProduct productDetail={item}/>
-        </Pressable>
+        <EachProduct productDetail={item}/>
     );
   
     return (
       <View style={styles.container}>
+        {/* Search input */}
         <TextInput
-            style={{
-                width:'98%',
-                borderRadius:50,
-                backgroundColor:'#fffddd',
-                padding:5,
-                marginTop:0,
-            }}
-            clearButtonMode="always"
-            placeholder=" product search..."
-            autoCapitalize="none"
-            autoCorrect={false}
-            value={searchQuery}
-            onChangeText={handleSearchInputChange}
-     />
-      
+          style={[styles.searchInput, { marginTop:50}]}
+          placeholder="Search products..."
+          value={searchQuery}
+          onChangeText={handleSearchInputChange}
+        />
+        
+        {/* FlatList for displaying products */}
         <FlatList
           data={filteredProducts}
           renderItem={renderItem}

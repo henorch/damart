@@ -7,6 +7,7 @@ import Category from "../../components/categories.component"
 import DiscountOffer from "../../components/discounted.component"
 import Slider from "@react-native-community/slider"
 import Carousel from "../../components/common/Carousel.component"
+import SearchComponent from "../seacrh/search.component"
 
 
 const homeimages = [ 

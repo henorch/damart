@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import ProductList from '../../components/ProductList/productList.component'
 import DescriptionComponent from "../description/description.component";
 import StackNavigator from "../../navigation/stackNavigation";
+import SearchComponent from "../seacrh/search.component";
 
 
 const Stack = createNativeStackNavigator();
@@ -19,7 +20,6 @@ const Clothingsomponents = () => {
     return(
         <View style={{
             flex:1,
-            marginVertical:5,
             width:'100%',
         }}>
             <ProductList categoryField={clothings}/>

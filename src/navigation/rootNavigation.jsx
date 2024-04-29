@@ -3,11 +3,12 @@ import AuthComponent from '../components/auth.component';
 import { DrawerPanel } from './drawerNavigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DescriptionComponent from '../pages/description/description.component';
-import Checkout from '../pages/checkout .component';
+
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { CheckOutComponent } from '../pages/checkout/checkOut.component';
 
 
 const RootStack = createNativeStackNavigator()
@@ -43,7 +44,7 @@ const RootNavigation = () => {
             //   }
             // }
             />
-            <RootStack.Screen name='checkout' component={Checkout}/>
+            <RootStack.Screen name='checkout' component={CheckOutComponent}/>
         </RootStack.Navigator>
     )
 }

@@ -75,7 +75,7 @@ const SpecialOffer = () => {
             }}>OFFER FOR YOU</Text>
             <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}>
-                {SpecialOffers.map((offers) => <SpecialOfferElement id={offers.id} image={offers.image} price={offers.price} name={offers.name}/>)}
+                {SpecialOffers.map((offers) => <SpecialOfferElement key={offers.id} id={offers.id} image={offers.image} price={offers.price} name={offers.name}/>)}
            </ScrollView>
            </View>   
     )

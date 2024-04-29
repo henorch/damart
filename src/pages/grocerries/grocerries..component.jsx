@@ -1,5 +1,6 @@
 import { ScrollView, View } from "react-native"
 import ProductList from '../../components/ProductList/productList.component'
+import SearchComponent from "../seacrh/search.component"
 
 const Grocceries = [
     {
@@ -122,7 +123,7 @@ const GrocerriesComponents = () => {
             flex:1,
             width:'100%',
         }}>
-            <ProductList categoryField={Grocceries}/>
+            <ProductList products={Grocceries}/>
         </View> 
     )
 }

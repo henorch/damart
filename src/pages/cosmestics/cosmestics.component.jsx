@@ -1,6 +1,7 @@
 import { ScrollView, View, Image, Button, Text } from "react-native"
 import { Categories } from "../../data";
 import ProductList from '../../components/ProductList/productList.component'
+import SearchComponent from "../seacrh/search.component";
 
 
 
@@ -10,7 +11,6 @@ const CosmeticsComponents = () => {
     return(
         <View style={{
             flex:1,
-            marginVertical:5,
             width:'100%',
         }}>
             <ProductList categoryField={cosmestics}/>

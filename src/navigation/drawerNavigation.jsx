@@ -6,7 +6,6 @@ import HomePage from '../pages/home/home.page';
 import ElectronicsComponents from '../pages/electronics/electronics.component';
 import GrocerriesComponents from '../pages/grocerries/grocerries..component';
 import CustomDrawer from '../components/customDrawer.component';
-import SignUp from '../components/signUp.component'; // we remove this later
 import CartComponent from '../pages/cart/cart.component';
 import { useSelector } from 'react-redux';
 import Clothingsomponents from '../pages/clothings/clothings.component';
@@ -31,7 +30,7 @@ export const DrawerPanel = () => {
               <View style={ styles.container }>
               
             <Pressable style={styles.icon}>    
-                <Icon name="search" size={25}/>
+                <Icon name="favorite" size={25}/>
               </Pressable>
 
               <Pressable

@@ -1,6 +1,7 @@
 import { ScrollView, View, Image, Button, Text } from "react-native"
 import { Categories } from "../../data";
 import ProductList from '../../components/ProductList/productList.component'
+import SearchComponent from "../seacrh/search.component";
 
 
 
@@ -13,7 +14,8 @@ const KitchensComponents = () => {
             marginVertical:5,
             width:'100%',
         }}>
-            <ProductList categoryField={kitchens}/>
+            <SearchComponent/>
+            <ProductList products={kitchens}/>
         </View> 
     )
 }

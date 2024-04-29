@@ -82,7 +82,7 @@ const Category = () => {
             }}>ALL CATEGORIES</Text>
         <View style={styles.subcontainer_1}>
             {
-            Categories.map(({ icon, id, name}) => <CategoryElement icon={icon} id={id} categoryname={name}/>)
+            Categories.map(({ icon, id, name}) => <CategoryElement key={id} icon={icon} id={id} categoryname={name}/>)
         }
 
 </View>

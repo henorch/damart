@@ -7,13 +7,17 @@ import {
     TouchableOpacity,
     StyleSheet,
     Switch,
+    TextInput,
   } from "react-native";
 
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import HeaderComponent from "./common/header.component";
+import { useState } from "react";
 
 const CustomDrawer = (props) => {
+
+ 
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>

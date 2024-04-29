@@ -10,8 +10,8 @@ const DefaultColor = COLOR.PRIMARY;
     return( <Pressable 
             onPress={handlePress}
             style={[styles.buttonDefault, { backgroundColor:color}]}>
-        <Icon name={icon} size={35}/>
-        <Text style={{ color:'white', fontSize:18, fontWeight:'bold'
+        {!icon ? '' : <Icon name={icon} size={35}/>}
+        <Text style={{ color:'white', fontSize:18, fontWeight:'bold', textAlign:'center'
         }}>{!title ? '' : title}</Text></Pressable>
 )}
 

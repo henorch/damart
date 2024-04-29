@@ -15,8 +15,8 @@ const DiscountOffer = () => {
                 padding:10,
             }}>TODAY'S DEAL</Text>
             <ScrollView horizontal={true}>
-            { Categories[0].products.map(({ image }) => 
-            <View style={{padding:5,
+            { Categories[0].products.map(({id,  image }) => 
+            <View key={id} style={{padding:5,
                 shadowColor:'grey',
                 shadowOpacity:0.8,
                 backgroundColor:"white",

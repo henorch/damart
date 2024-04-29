@@ -9,12 +9,6 @@ export const PaymentMethod  = () => {
             borderRadius:5,
             padding:20
         }}>
-        <Text style={{
-                fontSize:20,
-                padding:10,
-                margin:10,
-                fontWeight:'bold',
-            }}> PAYMENT METHODS </Text>
         <View style={{
             display:'flex',
             justifyContent:'space-evenly',
@@ -22,9 +16,6 @@ export const PaymentMethod  = () => {
             alignItems:'center',
         }}>
             <View>
-            <Text style={{
-                fontSize:20
-            }}>Instant Payment</Text>
             <View style={{
                 display:'flex',
                 flexDirection:'row',

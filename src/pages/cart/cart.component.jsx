@@ -1,9 +1,10 @@
-import { FlatList, View, Text, Image, Button, Pressable } from "react-native"
-
+import { FlatList, View, Text, Image, Button, Pressable, StyleSheet } from "react-native"
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { useCartContext } from "../../../context/cart.context";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ButtonComponent } from "../../components/common/Button.component";
+import { removeItem } from "../../utils/config/Redux/cartSlice";
 
 
 const CartElement = ( { prodItem , idx}) => {
@@ -20,7 +21,9 @@ const CartElement = ( { prodItem , idx}) => {
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'space-around'
-    }}>
+    }}
+    key={prodItem.id}
+    >
 
 <Image source={prodItem.image} style={{ width: "40%",
         backgroundColor:'green',
@@ -31,13 +34,14 @@ const CartElement = ( { prodItem , idx}) => {
         flexDirection:'column',
         justifyContent:'space-evenly',
         alignItems:'space-evenly',
-        height:'100%'}}>
+        height:'100%'}}
+        >
             <Text style={{  fontStyle:'italic', fontSize:23}}>{prodItem.name}</Text>
             <Text style={{ fontWeight:'bold', fontSize:30}}>{prodItem.price}</Text>
-            <Text style={{fontSize:20}}>Quantity: {1}</Text>
+            <Text style={{fontSize:20}}>Quantity: {prodItem.quantity}</Text>
             <Button title="remove" 
-            onPress={() => {removeFromCart(idx)
-            dispatch(removeItem(idx))}}
+            onPress={() => {
+            dispatch(removeItem(prodItem.id))}}
             style={{
             
             }}/>
@@ -53,7 +57,9 @@ const CartComponent = () => {
     const { cartItem, products, calculateTotalPrice, setCartItem} = useCartContext()
     const count = useSelector(state => state.cart.items.length)
     const cartItems =  useSelector(state => state.cart.items)
+    const [isDisabled, setIsDisable ] = useState(true)
     
+  
     useEffect(() => {
         products.push(...cartItems)
          setCartItem({
@@ -63,7 +69,7 @@ const CartComponent = () => {
         })
     }, [])
     
-    console.log(cartItem);
+    console.log(cartItem); // Keep this for later time
     const navigation = useNavigation();
     return(
         
@@ -100,6 +106,7 @@ const CartComponent = () => {
         display:'flex',
         justifyContent:'space-between',
         flexDirection:'row', 
+        backgroundColor:'#ffddf',
         width:'100%',
         padding:10
     }}>
@@ -118,17 +125,12 @@ const CartComponent = () => {
         alignSelf:'center',
         display:'flex',
     }}>
-    <Pressable
-    style={{
-        backgroundColor:'blue',
-        padding:10,
-        width:200,
-        alignItems:'center'
-    }}
-    onPress={() => navigation.navigate('checkout')}
+    {count > 0 &&  <Pressable
+    style={styles.button}
+    onPress={() => {navigation.navigate('checkout')}}
     ><Text style={{
         color:'white'
-    }}>Continue To Checkout</Text></Pressable>
+    }}>Continue To Checkout</Text></Pressable> }
     </View>
             </View>
         </View>
@@ -136,4 +138,17 @@ const CartComponent = () => {
     )
 }
 
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor:'blue',
+        padding:10,
+        width:200,
+        alignItems:'center'
+    },
+
+    disabledButton: {
+        backgroundColor:'gray'
+    }
+})
 export default CartComponent;
